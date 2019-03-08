@@ -43,8 +43,12 @@ RUN ln -s /usr/local/openresty/nginx/sbin/nginx /usr/bin/nginx
 
 EXPOSE 80 443
 
+RUN rm -rf /usr/local/openresty/nginx/conf
 RUN rm -rf /openresty-${OPENRESTY_VERSION}
 RUN rm -rf /openresty-${OPENRESTY_VERSION}.tar.gz
+
+COPY nginx/ /usr/local/openresty/nginx/conf
+RUN ln -s /usr/local/openresty/nginx/conf /etc/nginx
 
 WORKDIR $NGINX_PATH/
 CMD ["/usr/local/openresty/nginx/sbin/nginx", "-g", "daemon off;"]
