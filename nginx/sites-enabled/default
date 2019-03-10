@@ -13,9 +13,8 @@ server {
     index index.php index.html index.htm;
 
 
-    include common/php.conf;      
+    include common/redis-php.conf;      
     include common/wpcommon.conf;
     include common/locations.conf;
     include /PROJECT/wordpress/web/conf/nginx/*.conf;
 }
-
