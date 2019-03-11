@@ -50,5 +50,7 @@ RUN rm -rf /openresty-${OPENRESTY_VERSION}.tar.gz
 COPY nginx/ /usr/local/openresty/nginx/conf
 RUN ln -s /usr/local/openresty/nginx/conf /etc/nginx
 
+RUN mkdir -p /var/www && chown -R www-data:www-data /var/www
+
 WORKDIR $NGINX_PATH/
 CMD ["/usr/local/openresty/nginx/sbin/nginx", "-g", "daemon off;"]
